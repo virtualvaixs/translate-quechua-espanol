@@ -1,6 +1,8 @@
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
 import torch
 import sys
+from dotenv import load_dotenv
+load_dotenv()
 # from datasets import load_from_disk
 import librosa
 import os
