@@ -1,17 +1,23 @@
 import os
+import json
 from google.cloud import texttospeech
+from google.oauth2 import service_account
 import sys
 
 from dotenv import load_dotenv
 load_dotenv()
+# 📌 Cargar credenciales desde la variable JSON
+service_account_info = json.loads(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "M:/engineer-works/translate-qechua-spanish/src-python/translate-quechua-spanish-v1.json"
-cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+# cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 if len(sys.argv) < 2:
     print("Error: Se requiere el texto a convertir a voz.")
     sys.exit(1)
 texto_quechua = texto_espanol = sys.argv[1]
-client = texttospeech.TextToSpeechClient()
+
+client = texttospeech.TextToSpeechClient(credentials=credentials)
 
 synthesis_input = texttospeech.SynthesisInput(text=texto_quechua)
 
