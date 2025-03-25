@@ -2,11 +2,9 @@
 import requests
 import sys
 
-# 📌 Cargar la API Key desde el archivo JSON
-# json_path = "google_api_key.json"
-# with open(json_path, "r") as file:
-#     config = json.load(file)
-#     API_KEY = config["API_KEY"]
+from dotenv import load_dotenv
+load_dotenv()
+
 API_KEY = os.getenv("API_KEY")  # Obtener la clave desde las variables de entorno
 # Leer el texto en español transcrito
 # with open("texto_espanol.txt", "r", encoding="utf-8") as f:

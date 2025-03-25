@@ -2,12 +2,10 @@
 import requests
 import sys
 import os
-# 📌 Ruta del archivo JSON con la API Key
-# json_path = "google_api_key.json"
-# 🔹 Leer la API Key desde el archivo JSON
-# with open(json_path, "r") as file:
-#     config = json.load(file)
-#     API_KEY = config["API_KEY"]  # Extraer la clave
+
+from dotenv import load_dotenv
+load_dotenv()
+
 API_KEY = os.getenv("API_KEY")  # Obtener la clave desde las variables de entorno
 # 📌 Verificar si se proporcionó un texto como argumento
 if len(sys.argv) < 2:

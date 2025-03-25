@@ -4,7 +4,7 @@ import subprocess
 import os
 import sys
 
-VENV_PYTHON = r"M:\engineer-works\translate-qechua-spanish\coqui-env\Scripts\python.exe"  # Ruta al Python del entorno virtual
+# VENV_PYTHON = r"M:\engineer-works\translate-qechua-spanish\coqui-env\Scripts\python.exe"  # Ruta al Python del entorno virtual
 
 app = Flask(__name__)
 CORS(app)  # Permite acceso desde cualquier origen (puedes restringirlo luego)
@@ -29,7 +29,7 @@ def transcribe_audio_and_translate_to_spanish():
 
         # Ejecutar el script de Whisper y capturar la salida
         result_transcribe = subprocess.run(
-            [VENV_PYTHON, "whisper_quechua_to_text.py", file_path],
+            ["python", "whisper_quechua_to_text.py", file_path],
             capture_output=True, text=True)
 
         # Verificar si hubo error en la ejecución
@@ -43,7 +43,7 @@ def transcribe_audio_and_translate_to_spanish():
         os.remove(file_path)
 
         result_translation = subprocess.run(
-            [VENV_PYTHON, "google_text_quechua_to_spanish.py", transcription_quechua_to_text],
+            ["python", "google_text_quechua_to_spanish.py", transcription_quechua_to_text],
             capture_output=True, text=True)
         
         if result_translation.returncode != 0:
@@ -70,7 +70,7 @@ def parse_to_sound_spanish():
     try:
         # 🔹 Ejecutar el script para generar el audio
         result = subprocess.run(
-            [VENV_PYTHON, "google_text_to_sound_spanish.py", texto_espanol],
+            ["python", "google_text_to_sound_spanish.py", texto_espanol],
             capture_output=True, text=True
         )
 
@@ -106,7 +106,7 @@ def transcribe_audio_and_translate_to_quechua():
 
         # Ejecutar el script de Whisper y capturar la salida
         result_transcribe = subprocess.run(
-            [VENV_PYTHON, "whisper_spanish_to_text.py", file_path],
+            ["python", "whisper_spanish_to_text.py", file_path],
             capture_output=True, text=True)
 
         # Verificar si hubo error en la ejecución
@@ -120,7 +120,7 @@ def transcribe_audio_and_translate_to_quechua():
         os.remove(file_path)
 
         result_translation = subprocess.run(
-            [VENV_PYTHON, "google_text_spanish_to_quechua.py", transcription_spanish_to_text],
+            ["python", "google_text_spanish_to_quechua.py", transcription_spanish_to_text],
             capture_output=True, text=True)
         
         if result_translation.returncode != 0:
@@ -147,7 +147,7 @@ def parse_to_sound_quechua():
     try:
         # 🔹 Ejecutar el script para generar el audio
         result = subprocess.run(
-            [VENV_PYTHON, "google_text_to_sound_quechua-v1.py", texto_quechua],
+            ["python", "google_text_to_sound_quechua-v1.py", texto_quechua],
             capture_output=True, text=True
         )
 

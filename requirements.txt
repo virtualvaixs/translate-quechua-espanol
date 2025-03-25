@@ -25,3 +25,6 @@ requests
 
 # 🔹 Hugging Face (si cargas modelo desde allí)
 huggingface-hub
+
+# 🔹 dotenv para las variables de entorno.
+python-dotenv

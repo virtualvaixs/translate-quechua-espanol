@@ -2,6 +2,9 @@ import os
 from google.cloud import texttospeech
 import sys
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "M:/engineer-works/translate-qechua-spanish/src-python/translate-quechua-spanish-v1.json"
 cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 if len(sys.argv) < 2:
