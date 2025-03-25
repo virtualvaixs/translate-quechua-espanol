@@ -2,15 +2,16 @@ from transformers import WhisperForConditionalGeneration, WhisperProcessor
 import torch
 import sys
 from dotenv import load_dotenv
+import jsonify
 load_dotenv()
 # from datasets import load_from_disk
 import librosa
 import os
 from huggingface_hub import login
 
-HF_TOKEN = os.getenv("HF_TOKEN")  # Seteado en Railway o .env
-if HF_TOKEN:
-    login(HF_TOKEN)
+# HF_TOKEN = os.getenv("HF_TOKEN")  # Seteado en Railway o .env
+# if HF_TOKEN:
+#     login(HF_TOKEN)
 
 if len(sys.argv) < 2:
     print("Error: Se requiere la ruta del archivo de audio.")
@@ -44,4 +45,7 @@ try:
     # print("📝 Transcripción (Quechua):", transcription)
     print(transcription)
 except Exception as e:
-    print("Error al procesar audio enforce:", str(e))
+    return jsonify({
+        "error": "Error al procesar el audio",
+        "details": str(e)  # Esto mostrará el verdadero error
+    }), 500
