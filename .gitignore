@@ -4,5 +4,5 @@ uploads/
 scripts-v1/
 .env
 upload_model.py
-google_api.json
+google_api_key.json
 translate-quechua-spanish-v1.json
