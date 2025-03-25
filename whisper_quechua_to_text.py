@@ -45,7 +45,9 @@ try:
     # print("📝 Transcripción (Quechua):", transcription)
     print(transcription)
 except Exception as e:
-    return jsonify({
+    import json
+    print(json.dumps({
         "error": "Error al procesar el audio",
-        "details": str(e)  # Esto mostrará el verdadero error
-    }), 500
+        "details": str(e)
+    }))
+    sys.exit(1)
