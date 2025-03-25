@@ -1,0 +1,27 @@
+# 🔹 Framework para la API
+flask
+flask-cors
+
+# 🔹 Para ejecutar scripts y comandos
+subprocess32 ; python_version<"3.5"
+
+# 🔹 Whisper (modelo básico o Hugging Face)
+openai-whisper
+
+# 🔹 Modelos personalizados desde Transformers
+transformers
+torch
+
+# 🔹 Carga y manipulación de audio
+librosa
+numpy
+soundfile
+
+# 🔹 Google Cloud Text-to-Speech
+google-cloud-texttospeech
+
+# 🔹 Cliente HTTP para traducir con Google Translate API
+requests
+
+# 🔹 Hugging Face (si cargas modelo desde allí)
+huggingface-hub
