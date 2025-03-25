@@ -8,7 +8,7 @@ import librosa
 import os
 from huggingface_hub import login
 
-# HF_TOKEN = os.getenv("HF_TOKEN")  # Seteado en Railway o .env
+HF_TOKEN = os.getenv("HF_TOKEN")  # Seteado en Railway o .env
 # if HF_TOKEN:
 #     login(HF_TOKEN)
 
