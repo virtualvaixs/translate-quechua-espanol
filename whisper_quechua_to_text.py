@@ -54,5 +54,6 @@ except Exception as e:
         "details": error_trace,
         "debug": debug_info
         # campos adicionales para debug
-    }))
+    }), file=sys.stderr
+    )
     sys.exit(1)
