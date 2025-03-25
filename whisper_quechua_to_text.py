@@ -9,8 +9,8 @@ import os
 from huggingface_hub import login
 
 HF_TOKEN = os.getenv("HF_TOKEN")  # Seteado en Railway o .env
-# if HF_TOKEN:
-#     login(HF_TOKEN)
+if HF_TOKEN:
+    login(HF_TOKEN)
 
 if len(sys.argv) < 2:
     print("Error: Se requiere la ruta del archivo de audio.")
