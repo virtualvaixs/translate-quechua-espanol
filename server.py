@@ -37,10 +37,10 @@ def transcribe_audio_and_translate_to_spanish():
         #     return jsonify({"error": "Error al procesar el audio", "details": result_transcribe.stderr}), 500
         if result_transcribe.returncode != 0:
             try:
-                details = json.loads(result_transcribe.stdout)
+                details = json.loads(result_transcribe.stderr)
             except:
-                details = result_transcribe.stdout or "Error desconocido"
-                return jsonify({"error": "Error al procesar el audio", "details": details}), 500
+                details = result_transcribe.stderr or "Error desconocido"
+            return jsonify({"error": "Error al procesar el audio", "details": details}), 500
         # Obtener la transcripción desde stdout
         transcription_quechua_to_text = result_transcribe.stdout.strip()
 
