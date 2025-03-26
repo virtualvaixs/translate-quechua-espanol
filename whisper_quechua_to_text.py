@@ -27,9 +27,11 @@ model = WhisperForConditionalGeneration.from_pretrained(model_path)
 
 try:
     # 🔹 Cargar el archivo de audio manualmente
+    print("📥 Cargando audio con librosa...")
     audio_input, _ = librosa.load(audio_path, sr=16000)  # agrega al final del error un campo json que diga "audio_input" para verificar si su valor es correspondiente
 
     # Procesar input
+    print("📦 Procesando con Whisper...")
     inputs = processor(audio_input, sampling_rate=16000, return_tensors="pt") # agrega al final del error un campo json que diga "inputs" para verificar si su valor es correspondiente
 
     # 🔹 Config idioma español**force
@@ -37,9 +39,11 @@ try:
 
     # Generar
     with torch.no_grad():
+        print("🎯 Generando salida...")
         predicted_ids = model.generate(inputs.input_features, forced_decoder_ids=forced_decoder_ids) # agrega al final del error un campo json que diga "predicted_id" para verificar si su valor es correspondiente
 
     # Convertir predicción a texto
+    print("✅ Decodificando...")
     transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]
     # print("📝 Transcripción (Quechua):", transcription)
     print(transcription)
